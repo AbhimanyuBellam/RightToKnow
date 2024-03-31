@@ -1,0 +1,7 @@
+flask
+Flask-SocketIO
+Flask-Cors
+pydub
+geopy
+google-generativeai
+SpeechRecognition

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Audio Recorder</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f7f7f7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.container {
+  background-color: #fff;
+  border-radius: 20px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  max-width: 600px;
+  width: 90%;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+h1 {
+  color: #333;
+  margin-bottom: 40px;
+}
+
+.recorder {
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+}
+
+.btn {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  font-size: 24px;
+  margin: 0 10px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+}
+
+.btn:active {
+  transform: translateY(1px);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+#recordBtn {
+  background-color: #4CAF50;
+  border: none;
+  color: #fff;
+}
+
+#stopBtn {
+  background-color: #f44336;
+  border: none;
+  color: #fff;
+}
+
+.wave-animation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  margin-top: 20px;
+}
+
+.wave-animation span {
+  display: block;
+  width: 5px;
+  height: 30%;
+  margin: 0 2px;
+  background-color: #4CAF50;
+  animation: wave 1s ease-in-out infinite;
+}
+
+.wave-animation span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.wave-animation span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+.wave-animation span:nth-child(4) {
+  animation-delay: 0.6s;
+}
+
+.wave-animation span:nth-child(5) {
+  animation-delay: 0.8s;
+}
+
+@keyframes wave {
+  0%, 100% {
+    height: 30%;
+  }
+  50% {
+    height: 80%;
+  }
+}
+
+.output-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 1;
+}
+
+textarea {
+  width: 100%;
+  height: 200px;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 10px;
+  resize: none;
+  background-color: #add8e6;
+  color: #333;
+  overflow-y: auto;
+  margin-bottom: 10px; /* Reduced gap */
+}
+
+textarea:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+textarea::placeholder {
+  color: #aaa;
+}
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Audio Recorder</h1>
+    <div class="recorder">
+      <div class="controls">
+        <button id="recordBtn" class="btn">
+          <i class="fas fa-microphone"></i>
+        </button>
+        <button id="stopBtn" class="btn" disabled>
+          <i class="fas fa-stop"></i>
+        </button>
+      </div>
+      <div class="wave-animation">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+    <div class="output-container">
+      <textarea id="output" readonly placeholder="Your recording will appear here..."></textarea>
+      
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
